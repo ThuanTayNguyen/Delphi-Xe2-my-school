@@ -1,0 +1,15 @@
+program Project1;
+
+uses
+  Vcl.Forms,
+  UManager in 'UManager.pas' {FMain},
+  UChild1 in 'UChild1.pas' {Form2};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFMain, FMain);
+  Application.Run;
+end.

@@ -1,0 +1,216 @@
+﻿unit UChild1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids,
+  Data.DB, Data.Win.ADODB, Vcl.Menus, Vcl.DBCtrls, Vcl.StdCtrls, Vcl.Mask,
+  Vcl.OleServer, ExcelXP, Vcl.Buttons, UHeThong;
+
+type
+  TFChild = class(TForm)
+    DataSource1: TDataSource;
+    ADODataSet1: TADODataSet;
+    Panel1: TPanel;
+    MainMenu1: TMainMenu;
+    ExitUChild11: TMenuItem;
+    ADODataSet1MaSV: TWideStringField;
+    ADODataSet1HoLot: TWideStringField;
+    ADODataSet1Ten: TWideStringField;
+    ADODataSet1NgaySinh: TWideStringField;
+    ADODataSet1Nu: TBooleanField;
+    drkhoa: TDataSource;
+    dskhoa: TADODataSet;
+    Label1: TLabel;
+    DBLookupComboBox1: TDBLookupComboBox;
+    dslop: TADODataSet;
+    drlop: TDataSource;
+    DBLookupComboBox2: TDBLookupComboBox;
+    dsls: TADODataSet;
+    drls: TDataSource;
+    Label2: TLabel;
+    ADODataSet1TT: TLargeintField;
+    ADODataSet1TrangThai: TWordField;
+    ADODataSet1MaDanToc: TWideStringField;
+    ADODataSet1MaTonGiao: TWideStringField;
+    ADODataSet1TenTonGiao: TWideStringField;
+    DSDanToc: TADODataSet;
+    DBLookupComboBox3: TDBLookupComboBox;
+    Panel2: TPanel;
+    Splitter1: TSplitter;
+    DBGrid2: TDBGrid;
+    DBGrid3: TDBGrid;
+    Panel3: TPanel;
+    DBGrid1: TDBGrid;
+    DBCheckBox1: TDBCheckBox;
+    DBLookupComboBox4: TDBLookupComboBox;
+    DRDanToc: TDataSource;
+    DRTonGiao: TDataSource;
+    DSTonGiao: TADODataSet;
+    procedure UChild1Close(Sender: TObject; var Action: TCloseAction);
+    procedure ExitUChild11Click(Sender: TObject);
+    procedure UC1onDraw(Sender: TObject; const Rect: TRect; DataCol: Integer;
+      Column: TColumn; State: TGridDrawState);
+    procedure BT1Click(Sender: TObject);
+    procedure ADODataSet1BeforePost(DataSet: TDataSet);
+    procedure onColExit(Sender: TObject);
+    procedure DBLookupComboBox1Click(Sender: TObject);
+    procedure DBLookupComboBox2Click(Sender: TObject);
+    procedure dskhoaAfterScroll(DataSet: TDataSet);
+    procedure dslopAfterScroll(DataSet: TDataSet);
+    procedure FormShow(Sender: TObject);
+    procedure Label2Click(Sender: TObject);
+    procedure DBLookupComboBox4Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FChild: TFChild;
+
+implementation
+uses UManager;
+
+{$R *.dfm}
+
+procedure TFChild.ADODataSet1BeforePost(DataSet: TDataSet);
+var
+  i: integer;
+begin
+  i := ADODataSet1.RecNo;
+  ADODataSet1.Requery();
+  ADODataSet1.RecNo := i;
+end;
+
+procedure TFChild.BT1Click(Sender: TObject);
+var
+  i: integer;
+begin
+  i := FChild.ADODataSet1.RecNo;
+  FChild.ADODataSet1.Requery();
+  FChild.ADODataSet1.RecNo := i;
+end;
+ //NGAY 25/9/2017
+//Lien ket dong giua 1 truong va nhieu truong
+procedure TFChild.DBLookupComboBox1Click(Sender: TObject);
+var s:string;
+begin
+//msg('click');
+ s:='select * from LopHoc where MaKhoa='+DsKhoa.FieldByName('MaKhoa').AsString;
+ //msg(s);
+ dslop.Active:=false;
+ dslop.CommandText:=s;
+ dslop.Active:=true;
+end;
+ //NGAY 25/9/2017
+procedure TFChild.DBLookupComboBox2Click(Sender: TObject);
+var s:string;
+begin
+  s:='select row_number() over (order by MaSV) as TT,'
+  +'MaSV,HoLot+char(32)+Ten as HoTen,NgaySinh,Nu,HoLot,Ten,MaLop '
+  +'from HSSV where MaLop='''+dslop.FieldByName('MaLop').AsString+''' ' ;
+ //msg(s);
+ dsls.Active:=false;
+ dsls.CommandText:=s;
+ dsls.Active:=true;
+end;
+ procedure TFChild.DBLookupComboBox4Click(Sender: TObject);
+begin
+
+end;
+
+//NGAY 25/9/2017
+procedure TFChild.dskhoaAfterScroll(DataSet: TDataSet);
+var s:string;
+begin
+//msg('click');
+//Ngay 26/9/2017
+ //s:='select * from LopHoc where MaKhoa='+DsKhoa.FieldByName('MaKhoa').AsString;
+s:='select * from FC_Lop('+DsKhoa.FieldByName('MaKhoa').AsString+')';
+ //s:='EXEC SP_Lop'+DsKhoa.FieldByName('MaKhoa').AsString;
+ //msg(s);
+ dslop.Active:=false;
+ dslop.CommandText:=s;
+ dslop.Active:=true;
+ end;
+//end;
+
+procedure TFChild.dslopAfterScroll(DataSet: TDataSet);
+var s:string;
+begin
+ {s:='select row_number() over (order by MaSV) as TT,'
+ +'MaSV,HoLot+char(32)+Ten as HoTen,NgaySinh,Nu,HoLot,Ten,MaLop '
+ +'from HSSV where MaLop='''+dslop.FieldByName('MaLop').AsString+'''' ;
+  }
+ //s:='select * from FC_DSSV ('+dslop.FieldByName('MaLop').AsString+')';
+ // s:='exec SP_DSSV'+Dslop.FieldByName('MaLop').AsString;
+  s:='exec SP_DSSV_2 '''+Dslop.FieldByName('MaLop').AsString + '''';
+ //msg(s);
+ dsls.Active:=false;
+ dsls.CommandText:=s;
+ dsls.Active:=true;
+end;
+procedure TFChild.ExitUChild11Click(Sender: TObject);
+begin
+  FChild := Nil;
+end;
+
+procedure TFChild.FormShow(Sender: TObject);
+begin
+    DsKhoa.Active:=true;
+    ADODataSet1.Active:=true;
+   // dslop.Active:=true;
+   // dsls.Active:=true;
+end;
+
+procedure TFChild.Label2Click(Sender: TObject);
+begin
+
+end;
+
+//ngay 25/9/2017
+procedure TFChild.onColExit(Sender: TObject);
+var
+  grid: TDBGrid;
+begin
+  grid := Sender as TDBGrid;
+  ColExit(grid, DBCheckBox1, Sender);
+  //ColExit(grid, DBCheckBox2, Sender);
+  //ColExit(grid, DBCheckBox3, Sender);
+end;
+
+
+procedure TFChild.UC1onDraw(Sender: TObject; const Rect: TRect; DataCol: Integer;
+  Column: TColumn; State: TGridDrawState);
+var
+  grid: TDBGrid;
+  row: Integer;
+begin
+  grid := Sender as TDBGrid;
+  row := grid.DataSource.DataSet.RecNo;
+  if Odd(row) then
+  begin
+    grid.Canvas.Brush.Color := clMoneyGreen;
+  end
+  else
+    grid.Canvas.Brush.Color := clMenuHighLight;
+
+  // clMenuHighlight;//clNavy ; //clMedGray  ;//clSilver;
+  grid.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+  DrawColumnCell(grid, DBCheckBox1, Sender, Rect, DataCol, Column, State);
+  //DrawColumnCell(grid, DBCheckBox2, Sender, Rect, DataCol, Column, State);
+  //DrawColumnCell(grid, DBCheckBox3, Sender, Rect, DataCol, Column, State);
+end;
+
+procedure TFChild.UChild1Close(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := cafree;
+  FChild := Nil;
+end;
+
+
+end.
+

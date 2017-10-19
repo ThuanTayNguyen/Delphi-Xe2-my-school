@@ -1,0 +1,32 @@
+object FMain: TFMain
+  Left = 829
+  Top = 439
+  Caption = 'FMain'
+  ClientHeight = 526
+  ClientWidth = 890
+  Color = clBtnFace
+  Font.Charset = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Times New Roman'
+  Font.Style = []
+  FormStyle = fsMDIForm
+  Menu = MenuMain
+  OldCreateOrder = False
+  Position = poDesigned
+  WindowState = wsMaximized
+  PixelsPerInch = 96
+  TextHeight = 15
+  object MenuMain: TMainMenu
+    object Manager1: TMenuItem
+      Caption = 'Manager'
+      object N11: TMenuItem
+        Caption = '1'
+      end
+    end
+    object Exit1: TMenuItem
+      Caption = 'Exit'
+      OnClick = Exit1Click
+    end
+  end
+end

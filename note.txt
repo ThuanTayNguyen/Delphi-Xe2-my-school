@@ -1,0 +1,15 @@
+Link to database
+	Open SQLServer: connect to "sa" Accout
+	Sercurity\Login -> new user ["username", "password"]
+	Database\Sercurity\user -> add user \ owner
+	Delphi: Tool\dbGo\TADOconnection | Data Access | Data Control
+	ADOconnection: user connect string\build\ms ode for sql server
+		server name: "server name" (sql server: local)
+		username: "username"
+		password: "password"
+		allow saving password: true
+		select database: "database"
+	ADODataSet: DataSorce, ConnectString[ADOconnection], CommentText[SQL], Active = true
+	DataSorce: 
+	DataGrib:
+	

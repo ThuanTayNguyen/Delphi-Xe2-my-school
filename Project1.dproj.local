@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899-12-30 00:00:00.000.538,C:\Users\Public.DESKTOP-U1AJ42K\Documents\RAD Studio\Projects\Project1.dproj=D:\-project\learning-delphi\Project1.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.235,C:\Users\Public.DESKTOP-U1AJ42K\Documents\RAD Studio\Projects\Unit2.pas=D:\-project\learning-delphi\Unit2.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.043,=C:\Users\Public.DESKTOP-U1AJ42K\Documents\RAD Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.095,D:\-project\learning-delphi\Unit1.dfm=D:\-project\learning-delphi\UManager.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.674,C:\Users\Public.DESKTOP-U1AJ42K\Documents\RAD Studio\Projects\Unit1.dfm=D:\-project\learning-delphi\Unit1.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.674,C:\Users\Public.DESKTOP-U1AJ42K\Documents\RAD Studio\Projects\Unit1.pas=D:\-project\learning-delphi\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.417,=C:\Users\Public.DESKTOP-U1AJ42K\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.290,D:\-project\learning-delphi\Unit2.pas=D:\-project\learning-delphi\UChild1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.433,D:\_project\learning-delphi\Project1.dproj=D:\_project\learning-delphi\Project1.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.095,D:\-project\learning-delphi\Unit1.pas=D:\-project\learning-delphi\UManager.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.349,=D:\_project\learning-delphi\UHeThong.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.290,D:\-project\learning-delphi\Unit2.dfm=D:\-project\learning-delphi\UChild1.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.235,C:\Users\Public.DESKTOP-U1AJ42K\Documents\RAD Studio\Projects\Unit2.dfm=D:\-project\learning-delphi\Unit2.dfm</Transaction>
+    <Transaction>2017-10-09 09:21:05.000.443,=D:\learning-delphi -ok\Unit1.pas</Transaction>
+    <Transaction>2017-10-09 09:27:00.000.349,D:\learning-delphi -ok\UDangKy.dfm=D:\learning-delphi -ok\Unit1.dfm</Transaction>
+    <Transaction>2017-10-09 09:27:00.000.349,D:\learning-delphi -ok\UDangKy.pas=D:\learning-delphi -ok\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>
